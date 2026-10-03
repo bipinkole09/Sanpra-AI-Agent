@@ -1,0 +1,1969 @@
+/* =========================================================
+   ERP AI ASSISTANT
+   Colorful Purple / Blue AI UI
+   ========================================================= */
+
+#erp-ai-assistant {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 999999;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+/* =========================================================
+   FLOATING ROBOT BUTTON
+   ========================================================= */
+
+.erp-ai-floating-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+
+    width: 62px;
+    height: 62px;
+
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d5dfc 0%,
+            #7657ff 45%,
+            #4e8cff 100%
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(91, 76, 230, 0.35);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.erp-ai-floating-button:hover {
+    transform: translateY(-3px) scale(1.04);
+
+    box-shadow:
+        0 16px 36px rgba(91, 76, 230, 0.45);
+}
+
+.erp-ai-floating-icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   MAIN PANEL
+   ========================================================= */
+
+.erp-ai-main-panel {
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    width: 390px;
+    height: 650px;
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 26px;
+
+    background: #f7f6ff;
+
+    box-shadow:
+        0 25px 70px rgba(42, 32, 100, 0.28),
+        0 5px 20px rgba(42, 32, 100, 0.12);
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
+}
+
+.erp-ai-main-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    transform:
+        translateY(20px)
+        scale(0.96) !important;
+}
+
+.erp-ai-main-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+
+    transform:
+        translateY(0)
+        scale(1) !important;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.erp-ai-header {
+    min-height: 82px;
+
+    padding: 15px 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6657f6 0%,
+            #7557f5 45%,
+            #477fe9 100%
+        );
+
+    color: #ffffff;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.erp-ai-avatar {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.20);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.18);
+
+    font-size: 25px;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-header-info {
+    min-width: 0;
+}
+
+.erp-ai-title {
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    color: #ffffff;
+}
+
+.erp-ai-status {
+    margin-top: 4px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.84);
+}
+
+.erp-ai-status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #8df7b0;
+
+    box-shadow:
+        0 0 8px
+        rgba(141, 247, 176, 0.8);
+}
+
+.erp-ai-close-button {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.erp-ai-close-button:hover {
+    background:
+        rgba(255, 255, 255, 0.24);
+
+    transform: rotate(4deg);
+}
+
+
+/* =========================================================
+   CHAT AREA
+   ========================================================= */
+
+.erp-ai-chat-area {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 22px 18px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7f6ff 0%,
+            #f8f7ff 45%,
+            #f3f2ff 100%
+        );
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        #c7c1f4
+        transparent;
+}
+
+.erp-ai-chat-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.erp-ai-chat-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.erp-ai-chat-area::-webkit-scrollbar-thumb {
+    background: #c8c2f0;
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.erp-ai-welcome {
+    text-align: center;
+
+    padding:
+        8px
+        12px
+        18px;
+}
+
+.erp-ai-welcome-avatar {
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 14px;
+
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ddd8ff,
+            #e6f0ff
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(99, 84, 220, 0.15);
+
+    border:
+        1px solid
+        rgba(117, 95, 230, 0.12);
+}
+
+.erp-ai-welcome-title {
+    font-size: 21px;
+    font-weight: 750;
+
+    color: #282452;
+
+    line-height: 1.3;
+}
+
+.erp-ai-welcome-text {
+    max-width: 315px;
+
+    margin:
+        8px auto 0;
+
+    font-size: 13px;
+    line-height: 1.55;
+
+    color: #77758e;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.erp-ai-quick-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin:
+        2px
+        0
+        18px;
+}
+
+.erp-ai-quick-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    padding:
+        10px
+        13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    border:
+        1px solid
+        #e7e3ff;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    color: #393652;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 18px
+        rgba(72, 61, 145, 0.06);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.erp-ai-quick-button:hover {
+    transform: translateY(-2px);
+
+    border-color: #c9c0ff;
+
+    box-shadow:
+        0 9px 24px
+        rgba(91, 76, 190, 0.12);
+}
+
+.erp-ai-quick-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #f1efff;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.erp-ai-messages {
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+
+/*
+   Supports the message markup generated by the current JS.
+*/
+
+.erp-ai-message-row {
+    display: flex;
+
+    width: 100%;
+}
+
+.erp-ai-message-row.user {
+    justify-content: flex-end;
+}
+
+.erp-ai-message-row.assistant {
+    justify-content: flex-start;
+}
+
+.erp-ai-message {
+    max-width: 82%;
+
+    padding:
+        11px
+        14px;
+
+    border-radius: 17px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+
+    white-space: pre-wrap;
+}
+
+.erp-ai-message.user {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6655ef,
+            #7759f4
+        );
+
+    border-bottom-right-radius: 5px;
+
+    box-shadow:
+        0 7px 18px
+        rgba(94, 76, 207, 0.20);
+}
+
+.erp-ai-message.assistant {
+    color: #35334a;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #ebe8f7;
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(66, 58, 118, 0.07);
+}
+
+
+/* =========================================================
+   ALTERNATE MESSAGE CLASS SUPPORT
+   ========================================================= */
+
+.erp-ai-user-message {
+    align-self: flex-end;
+
+    max-width: 82%;
+
+    padding: 11px 14px;
+
+    border-radius: 17px 17px 5px 17px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6655ef,
+            #7759f4
+        );
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    word-break: break-word;
+
+    box-shadow:
+        0 7px 18px
+        rgba(94, 76, 207, 0.20);
+}
+
+.erp-ai-assistant-message {
+    align-self: flex-start;
+
+    max-width: 82%;
+
+    padding: 11px 14px;
+
+    border-radius: 17px 17px 17px 5px;
+
+    color: #35334a;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #ebe8f7;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    word-break: break-word;
+
+    box-shadow:
+        0 5px 18px
+        rgba(66, 58, 118, 0.07);
+}
+
+
+/* =========================================================
+   TYPING INDICATOR
+   ========================================================= */
+
+.erp-ai-typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: fit-content;
+
+    padding:
+        11px
+        14px;
+
+    border-radius:
+        17px
+        17px
+        17px
+        5px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #ebe8f7;
+
+    box-shadow:
+        0 5px 18px
+        rgba(66, 58, 118, 0.06);
+}
+
+.erp-ai-typing span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #8d82dd;
+
+    animation:
+        erp-ai-typing-dot
+        1.2s
+        infinite ease-in-out;
+}
+
+.erp-ai-typing span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.erp-ai-typing span:nth-child(3) {
+    animation-delay: 0.30s;
+}
+
+@keyframes erp-ai-typing-dot {
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   INPUT AREA
+   ========================================================= */
+
+.erp-ai-input-area {
+    min-height: 72px;
+
+    padding:
+        10px
+        12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    background: #ffffff;
+
+    border-top:
+        1px solid
+        #e9e6f6;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-plus-button,
+.erp-ai-mic-button,
+.erp-ai-send-button {
+    flex-shrink: 0;
+
+    border: none;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.erp-ai-plus-button {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d5df5,
+            #765df5
+        );
+
+    color: #ffffff;
+
+    font-size: 24px;
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+.erp-ai-mic-button {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6c9b,
+            #ff5d8e
+        );
+
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+.erp-ai-send-button {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b74f5,
+            #567cf4
+        );
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+.erp-ai-plus-button:hover,
+.erp-ai-mic-button:hover,
+.erp-ai-send-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 15px
+        rgba(85, 72, 200, 0.20);
+}
+
+.erp-ai-input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 42px;
+
+    padding:
+        0
+        14px;
+
+    border:
+        1px solid
+        #e7e4f2;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    background: #f8f7fc;
+
+    color: #302d46;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.erp-ai-input::placeholder {
+    color: #aaa7b8;
+}
+
+.erp-ai-input:focus {
+    background: #ffffff;
+
+    border-color: #bcb3f3;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(108, 92, 231, 0.08);
+}
+
+
+/* =========================================================
+   BOT CALL PANEL
+   ========================================================= */
+
+.erp-ai-call-panel {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f0edff 0%,
+            #faf9ff 100%
+        );
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.erp-ai-call-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+
+/* Call header */
+
+.erp-ai-call-header {
+    min-height: 82px;
+
+    padding:
+        15px
+        17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6657f6,
+            #7557f5,
+            #477fe9
+        );
+}
+
+.erp-ai-call-header-left {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.erp-ai-call-avatar {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    font-size: 24px;
+}
+
+.erp-ai-call-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.erp-ai-call-status {
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+}
+
+.erp-ai-call-close {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    color: #ffffff;
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+
+/* Call body */
+
+.erp-ai-call-body {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding:
+        40px
+        22px
+        25px;
+
+    text-align: center;
+}
+
+.erp-ai-call-avatar-large {
+    position: relative;
+
+    width: 145px;
+    height: 145px;
+
+    margin-top: 15px;
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.erp-ai-call-avatar-ring {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d7cff,
+            #5e91ff
+        );
+
+    opacity: 0.25;
+
+    animation:
+        erp-ai-call-ring
+        2s
+        infinite ease-in-out;
+}
+
+.erp-ai-call-avatar-inner {
+    position: relative;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dcd7ff,
+            #e3efff
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(86, 70, 192, 0.18);
+
+    font-size: 52px;
+}
+
+@keyframes erp-ai-call-ring {
+    0%,
+    100% {
+        transform: scale(0.94);
+        opacity: 0.20;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.38;
+    }
+}
+
+.erp-ai-call-timer {
+    margin-top: 2px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #77738e;
+}
+
+.erp-ai-call-main-status {
+    margin-top: 9px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #302b52;
+}
+
+.erp-ai-call-transcript {
+    max-width: 290px;
+
+    margin-top: 9px;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #858197;
+}
+
+.erp-ai-call-waveform {
+    height: 48px;
+
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.erp-ai-call-waveform span {
+    width: 5px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #765df5,
+            #5685f5
+        );
+
+    animation:
+        erp-ai-wave
+        1s
+        infinite ease-in-out;
+}
+
+.erp-ai-call-waveform span:nth-child(1) {
+    height: 15px;
+    animation-delay: 0s;
+}
+
+.erp-ai-call-waveform span:nth-child(2) {
+    height: 28px;
+    animation-delay: 0.1s;
+}
+
+.erp-ai-call-waveform span:nth-child(3) {
+    height: 40px;
+    animation-delay: 0.2s;
+}
+
+.erp-ai-call-waveform span:nth-child(4) {
+    height: 25px;
+    animation-delay: 0.3s;
+}
+
+.erp-ai-call-waveform span:nth-child(5) {
+    height: 35px;
+    animation-delay: 0.4s;
+}
+
+.erp-ai-call-waveform span:nth-child(6) {
+    height: 22px;
+    animation-delay: 0.5s;
+}
+
+.erp-ai-call-waveform span:nth-child(7) {
+    height: 14px;
+    animation-delay: 0.6s;
+}
+
+@keyframes erp-ai-wave {
+    0%,
+    100% {
+        transform: scaleY(0.7);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.erp-ai-call-controls {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.erp-ai-call-mic {
+    width: 54px;
+    height: 54px;
+
+    border: none;
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6c9b,
+            #ff5d8e
+        );
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(255, 91, 139, 0.25);
+}
+
+.erp-ai-call-end {
+    height: 48px;
+
+    padding:
+        0
+        21px;
+
+    border: none;
+    border-radius: 15px;
+
+    background:
+        #302b52;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .erp-ai-main-panel {
+        right: 10px;
+        left: 10px;
+
+        bottom: 10px;
+
+        width: auto;
+
+        height:
+            calc(100vh - 20px);
+
+        max-height: 720px;
+
+        border-radius: 22px;
+    }
+
+    .erp-ai-floating-button {
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .erp-ai-chat-area {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .erp-ai-welcome-title {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .erp-ai-main-panel {
+        right: 0;
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        border-radius: 0;
+    }
+
+    .erp-ai-floating-button {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .erp-ai-input-area {
+        padding:
+            9px;
+    }
+
+    .erp-ai-plus-button,
+    .erp-ai-mic-button,
+    .erp-ai-send-button {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* =========================================================
+   HEADER BOT CALL BUTTON
+   ========================================================= */
+
+.erp-ai-header-call {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.erp-ai-header-call:hover {
+    background: rgba(255, 255, 255, 0.30);
+    transform: scale(1.05);
+}
+
+.erp-ai-header-call:active {
+    transform: scale(0.96);
+}
+
+/* =========================================================
+   CONTACTS / PERSON CHAT
+   ========================================================= */
+
+.erp-ai-contacts-button {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 11px 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #eee9ff 0%,
+        #e8f0ff 100%
+    );
+
+    color: #4f46c5;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 10px
+        rgba(79, 70, 229, 0.08);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.erp-ai-contacts-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 14px
+        rgba(79, 70, 229, 0.14);
+}
+
+.erp-ai-contacts-button:active {
+    transform: scale(0.98);
+}
+
+.erp-ai-contacts-panel {
+    position: absolute;
+
+    top: 82px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: #f7f7ff;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.erp-ai-contacts-hidden {
+    display: none !important;
+}
+
+.erp-ai-contacts-header {
+    padding: 16px 17px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #6657f6 0%,
+        #7557f5 45%,
+        #477fe9 100%
+    );
+
+    color: #ffffff;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-contacts-back {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-contacts-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.erp-ai-contacts-subtitle {
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.erp-ai-contact-list {
+    padding: 12px;
+
+    overflow-y: auto;
+
+    flex: 1;
+}
+
+.erp-ai-contact-item {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #e7e5f5;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.erp-ai-contact-item:hover {
+    transform: translateY(-1px);
+
+    border-color: #cfc9ff;
+
+    box-shadow:
+        0 5px 14px
+        rgba(79, 70, 229, 0.10);
+}
+
+.erp-ai-contact-avatar {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7657f6,
+        #4f8bea
+    );
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-contact-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.erp-ai-contact-name {
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #27234a;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.erp-ai-contact-detail {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: #85829c;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.erp-ai-contact-arrow {
+    color: #8178d9;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-contacts-loading,
+.erp-ai-contacts-empty,
+.erp-ai-contacts-error {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #85829c;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   PERSON CHAT
+   ========================================================= */
+
+.erp-ai-person-chat {
+    position: absolute;
+
+    top: 82px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: #f7f7ff;
+
+    z-index: 25;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.erp-ai-person-chat-hidden {
+    display: none !important;
+}
+
+.erp-ai-person-header {
+    padding: 12px 14px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e9e7f4;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-person-back {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eeeaff;
+
+    color: #5b4fd1;
+
+    font-size: 19px;
+
+    cursor: pointer;
+}
+
+.erp-ai-person-avatar {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7657f6,
+        #4f8bea
+    );
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+.erp-ai-person-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.erp-ai-person-name {
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #29254b;
+}
+
+.erp-ai-person-status {
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    color: #8b88a0;
+}
+
+.erp-ai-person-call,
+.erp-ai-person-video {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eeeaff;
+
+    color: #5b4fd1;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.erp-ai-person-messages {
+    flex: 1;
+
+    padding: 15px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.erp-ai-person-empty {
+    margin: auto;
+
+    text-align: center;
+
+    color: #9996aa;
+
+    font-size: 12px;
+}
+
+.erp-ai-person-input-area {
+    padding: 10px 12px;
+
+    background: #ffffff;
+
+    border-top: 1px solid #e9e7f4;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+}
+
+.erp-ai-person-input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: #f2f1fa;
+
+    border-radius: 22px;
+
+    padding: 11px 14px;
+
+    font-size: 13px;
+
+    color: #29254b;
+}
+
+.erp-ai-person-send {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #7056f5,
+        #4b82e8
+    );
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+/* =========================
+   ADD CONTACT
+   ========================= */
+
+.erp-ai-contacts-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.erp-ai-contacts-header-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.erp-ai-add-contact-button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 10px;
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.erp-ai-add-contact-button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
+}
+
+.erp-ai-add-contact-button:active {
+    transform: scale(0.95);
+}
+
+
+/* Overlay */
+
+.erp-ai-add-contact-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+    background: rgba(31, 24, 54, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Modal */
+
+.erp-ai-add-contact-modal {
+    width: min(420px, 100%);
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+        0 24px 70px rgba(40, 25, 80, 0.28);
+    animation: erpAiContactModalIn 0.2s ease-out;
+}
+
+@keyframes erpAiContactModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Modal header */
+
+.erp-ai-add-contact-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 22px;
+    background: linear-gradient(
+        135deg,
+        #6d28d9,
+        #8b5cf6,
+        #a855f7
+    );
+    color: #ffffff;
+}
+
+.erp-ai-add-contact-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.erp-ai-add-contact-subtitle {
+    margin-top: 4px;
+    font-size: 12px;
+    opacity: 0.88;
+}
+
+.erp-ai-add-contact-close {
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.erp-ai-add-contact-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* Modal body */
+
+.erp-ai-add-contact-body {
+    padding: 22px;
+}
+
+.erp-ai-add-contact-label {
+    display: block;
+    margin: 0 0 6px;
+    color: #4c4560;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.erp-ai-add-contact-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd6fe;
+    border-radius: 12px;
+    padding: 11px 13px;
+    margin-bottom: 15px;
+    background: #faf9ff;
+    color: #29233a;
+    font-size: 14px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.erp-ai-add-contact-input:focus {
+    border-color: #8b5cf6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+.erp-ai-add-contact-input::placeholder {
+    color: #a39bb5;
+}
+
+
+/* Error */
+
+.erp-ai-add-contact-error {
+    min-height: 18px;
+    margin-bottom: 8px;
+    color: #dc2626;
+    font-size: 12px;
+}
+
+
+/* Save button */
+
+.erp-ai-add-contact-save {
+    width: 100%;
+    border: none;
+    border-radius: 13px;
+    padding: 12px 16px;
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(124, 58, 237, 0.22);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.erp-ai-add-contact-save:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 9px 22px rgba(124, 58, 237, 0.30);
+}
+
+.erp-ai-add-contact-save:active {
+    transform: translateY(0);
+}
+
+.erp-ai-add-contact-save:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}

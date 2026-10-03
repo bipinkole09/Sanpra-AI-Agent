@@ -53,3 +53,11 @@ jspm_packages/
 
 # Aider AI Chat
 .aider*
+
+bk_account/hooks.py.backup
+bk_account/hooks_working_backup.py
+bk_account/api/*.backup
+bk_account/api/*backup*.py
+bk_account/tally/*.backup
+bk_account/tally/*backup*.py
+bk_account/tally/api_before_payment_company_fix.py

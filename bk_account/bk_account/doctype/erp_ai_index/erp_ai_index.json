@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "creation": "2026-09-11 12:30:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_doctype",
+  "document_name",
+  "modified",
+  "searchable_data"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "document_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Document Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "modified",
+   "fieldtype": "Datetime",
+   "label": "Modified"
+  },
+  {
+   "fieldname": "searchable_data",
+   "fieldtype": "Long Text",
+   "label": "Searchable Data"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-11 12:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "BK Account",
+ "controller": "bk_account.bk_account.doctype.erp_ai_index.erp_ai_index.ERP_AI_Index",
+ "name": "ERP AI Index",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
